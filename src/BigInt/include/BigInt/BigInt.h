@@ -36,31 +36,33 @@ public:
 
     //Addition and Subtraction
 	BigInt& operator+=(const BigInt&);
-	friend BigInt operator+(const BigInt&, const BigInt&);
+	friend BigInt operator+(BigInt, const BigInt&);
     BigInt& operator-=(const BigInt&);
-	friend BigInt operator-(const BigInt&, const BigInt&);
+	friend BigInt operator-(BigInt, const BigInt&);
 
 	//Multiplication and Division
 	BigInt& operator*=(const BigInt&);
-	friend BigInt operator*(const BigInt&, const BigInt&);
+	friend BigInt operator*(BigInt, const BigInt&);
 	BigInt& operator/=(const BigInt&);
-	friend BigInt operator/(const BigInt&, const BigInt&);
+	friend BigInt operator/(BigInt, const BigInt&);
 
 	//Modulo
-	friend BigInt operator%(const BigInt&, const BigInt&);
 	BigInt& operator%=(const BigInt&);
+	friend BigInt operator%(BigInt, const BigInt&);
 
 	//Power Function
 	BigInt& operator^=(const BigInt&);
-	friend BigInt operator^(BigInt&, const BigInt&);
+	friend BigInt operator^(BigInt, const BigInt&);
 
-	//Read and Write
-	friend ostream& operator<<(ostream&, const BigInt&);
-	friend istream& operator>>(istream&, BigInt&);
+	string toString() const { return digits; }
 
 private:
 	string digits;
 
 };
+
+//Read and Write
+ostream& operator<<(ostream&, const BigInt&);
+istream& operator>>(istream&, BigInt&);
 
 #endif

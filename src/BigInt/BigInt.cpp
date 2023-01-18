@@ -80,10 +80,9 @@ BigInt &BigInt::operator++()
 
 BigInt BigInt::operator++(int /* tmp */)
 {
-	BigInt aux;
-	aux = *this;
-	++(*this);
-	return aux;
+	BigInt old = *this;
+	operator++(); // prefix increment
+	return old;
 }
 
 BigInt &BigInt::operator--()
@@ -94,93 +93,81 @@ BigInt &BigInt::operator--()
 
 BigInt BigInt::operator--(int /* tmp */)
 {
-	BigInt aux;
-	aux = *this;
-	--(*this);
-	return aux;
+	BigInt old = *this;
+	operator--(); // prefix decrement
+	return old;
 }
 
-BigInt& BigInt::operator+=(const BigInt& b)
+BigInt& BigInt::operator+=(const BigInt& rhs)
 {
 	// TODO
     return *this;
 }
 
-BigInt operator+(const BigInt& a, const BigInt& b)
+BigInt operator+(BigInt lhs, const BigInt& rhs)
 {
-	BigInt temp;
-	temp = a;
-	temp += b;
-	return temp;
+	lhs += rhs;
+	return lhs;
 }
 
-BigInt& BigInt::operator-=(const BigInt& b)
+BigInt& BigInt::operator-=(const BigInt& rhs)
 {
 	// TODO
     return *this;
 }
 
-BigInt operator-(const BigInt& a, const BigInt& b)
+BigInt operator-(BigInt lhs, const BigInt& rhs)
 {
-	BigInt temp;
-	temp = a;
-	temp -= b;
-	return temp;
+	lhs -= rhs;
+	return lhs;
 }
 
-BigInt& BigInt::operator*=(const BigInt& b)
+BigInt& BigInt::operator*=(const BigInt& rhs)
 {
 	// TODO
     return *this;
 }
 
-BigInt operator*(const BigInt& a, const BigInt& b)
+BigInt operator*(BigInt lhs, const BigInt& rhs)
 {
-	BigInt temp;
-	temp = a;
-	temp *= b;
-	return temp;
+	lhs *= rhs;
+	return lhs;
 }
 
-BigInt& BigInt::operator/=(const BigInt& b)
+BigInt& BigInt::operator/=(const BigInt& rhs)
 {
 	// TODO
     return *this;
 }
 
-BigInt operator/(const BigInt& a, const BigInt& b)
+BigInt operator/(BigInt lhs, const BigInt& rhs)
 {
-	BigInt temp;
-	temp = a;
-	temp /= b;
-	return temp;
+	lhs /= rhs;
+	return lhs;
 }
 
-BigInt& BigInt::operator%=(const BigInt& b)
+BigInt& BigInt::operator%=(const BigInt& rhs)
 {
 	// TODO
     return *this;
 }
 
-BigInt operator%(const BigInt& a, const BigInt& b)
+BigInt operator%(BigInt lhs, const BigInt& rhs)
 {
-	BigInt temp;
-	temp = a;
-	temp %= b;
-	return temp;
+	lhs %= rhs;
+	return lhs;
 }
 
-BigInt& BigInt::operator^=(const BigInt& b)
+BigInt& BigInt::operator^=(const BigInt& rhs)
 {
 	// TODO
     return *this;
 }
 
-BigInt operator^(const BigInt& a, const BigInt& b)
+BigInt operator^(BigInt lhs, const BigInt& rhs)
 {
-	BigInt temp(a);
-	temp ^= b;
-	return temp;
+	lhs ^= rhs;
+	return lhs;
 }
 
 istream &operator>>(istream& in, BigInt& a)
@@ -191,6 +178,6 @@ istream &operator>>(istream& in, BigInt& a)
 
 ostream &operator<<(ostream& out, const BigInt& a)
 {
-	// TODO
+	out << a.toString();
     return out;
 }

@@ -12,7 +12,7 @@ int main()
     BigInt third(second);
     BigInt forth = third;
 
-    first = second;
+    second = first;
 
     if (first != second) 
     {
