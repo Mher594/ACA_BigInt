@@ -1,5 +1,5 @@
 # ACA_BigInt
-C++ BigInt implementation
+C++ simple BigInt implementation
 
 ## build
 ```
