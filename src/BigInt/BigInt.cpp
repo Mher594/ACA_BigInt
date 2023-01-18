@@ -5,6 +5,9 @@
 
 using namespace std;
 
+namespace ACA
+{
+
 BigInt::BigInt(const string& s)
 {
 	// TODO
@@ -20,7 +23,7 @@ BigInt::BigInt(const BigInt& other)
 	digits = other.digits;
 }
 
-BigInt &BigInt::operator=(const BigInt& other)
+BigInt& BigInt::operator=(const BigInt& other)
 {
     // Guard self assignment
     if (this == &other)
@@ -72,7 +75,7 @@ bool operator<=(const BigInt& a, const BigInt& b)
 	return !(a > b);
 }
 
-BigInt &BigInt::operator++()
+BigInt& BigInt::operator++()
 {
 	// TODO
     return *this;
@@ -85,7 +88,7 @@ BigInt BigInt::operator++(int /* tmp */)
 	return old;
 }
 
-BigInt &BigInt::operator--()
+BigInt& BigInt::operator--()
 {
 	// TODO
     return *this;
@@ -170,14 +173,16 @@ BigInt operator^(BigInt lhs, const BigInt& rhs)
 	return lhs;
 }
 
-istream &operator>>(istream& in, BigInt& a)
+istream& operator>>(istream& in, BigInt& a)
 {
     // TODO
     return in;
 }
 
-ostream &operator<<(ostream& out, const BigInt& a)
+ostream& operator<<(ostream& out, const BigInt& a)
 {
 	out << a.toString();
     return out;
 }
+
+} // namespace ACA

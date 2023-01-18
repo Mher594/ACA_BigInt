@@ -3,14 +3,16 @@
 
 #include <string>
 
-using namespace std;
+namespace ACA
+{
 
 class BigInt
 {
+
 public:
 	BigInt(unsigned long long n = 0);
-	BigInt(const string &);
-	BigInt(const BigInt &);
+	BigInt(const std::string&);
+	BigInt(const BigInt&);
 
 	/* * * * Operator Overloading * * * */
 
@@ -54,15 +56,17 @@ public:
 	BigInt& operator^=(const BigInt&);
 	friend BigInt operator^(BigInt, const BigInt&);
 
-	string toString() const { return digits; }
+	std::string toString() const { return digits; }
 
 private:
-	string digits;
+	std::string digits;
 
 };
 
 //Read and Write
-ostream& operator<<(ostream&, const BigInt&);
-istream& operator>>(istream&, BigInt&);
+std::ostream& operator<<(std::ostream&, const BigInt&);
+std::istream& operator>>(std::istream&, BigInt&);
+
+} // namespace ACA
 
 #endif

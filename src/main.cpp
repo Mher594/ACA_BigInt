@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+using namespace ACA;
 using namespace std;
 
 int main()

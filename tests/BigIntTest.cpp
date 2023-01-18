@@ -1,6 +1,8 @@
 #include <BigInt/BigInt.h>
 #include <gtest/gtest.h>
 
+using namespace ACA;
+
 TEST(BigIntTest, TestIntegerOne_One)
 {
     const auto expected = 1;
