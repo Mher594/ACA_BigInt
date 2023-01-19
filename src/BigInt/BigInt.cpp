@@ -10,6 +10,7 @@ namespace ACA
 
 BigInt::BigInt(const string& s)
 {
+	digits = s; // No checks at all, risky
 	// TODO
 }
 
@@ -43,36 +44,35 @@ BigInt& BigInt::operator=(BigInt other) noexcept
 }
 */
 
-bool operator==(const BigInt& a, const BigInt& b)
+bool operator==(const BigInt& lhs, const BigInt& rhs)
+{
+    return lhs.digits == rhs.digits;
+}
+
+bool operator!=(const BigInt& lhs, const BigInt& rhs)
+{
+	return !(lhs == rhs);
+}
+
+bool operator<(const BigInt& lhs, const BigInt& rhs)
 {
 	// TODO
     return true;
 }
 
-bool operator!=(const BigInt& a,const BigInt& b)
+bool operator>(const BigInt& lhs, const BigInt& rhs)
 {
-	return !(a == b);
+	return rhs < lhs;
 }
 
-bool operator<(const BigInt& a, const BigInt& b)
+bool operator>=(const BigInt& lhs, const BigInt& rhs)
 {
-	// TODO
-    return true;
+	return !(lhs < rhs);
 }
 
-bool operator>(const BigInt& a, const BigInt& b)
+bool operator<=(const BigInt& lhs, const BigInt& rhs)
 {
-	return b < a;
-}
-
-bool operator>=(const BigInt& a, const BigInt& b)
-{
-	return !(a < b);
-}
-
-bool operator<=(const BigInt& a, const BigInt& b)
-{
-	return !(a > b);
+	return !(lhs > rhs);
 }
 
 BigInt& BigInt::operator++()
