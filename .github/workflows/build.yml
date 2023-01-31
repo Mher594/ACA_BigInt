@@ -43,7 +43,7 @@ jobs:
 
       - name: Configure CMake
         run: |
-          cmake -S . -B make -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake -S . -B make -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE='${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake'
           
       - name: Build
         working-directory: ./make
