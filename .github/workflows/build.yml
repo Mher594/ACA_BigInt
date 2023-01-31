@@ -20,6 +20,12 @@ jobs:
           - os: windows-latest
             triplet: x64-windows-release
             build-type: Release
+          - os: ubuntu-latest
+            triplet: x64-linux-release
+            build-type: Release
+          - os: macos-latest
+            triplet: x64-osx
+            build-type: Release
 
     steps:
       - name: Checkout
@@ -33,7 +39,7 @@ jobs:
 
       - name: Configure CMake
         run: |
-          cmake -S . -B make -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }}
+          cmake -S . -B make -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
           
       - name: Build
         working-directory: ./make
