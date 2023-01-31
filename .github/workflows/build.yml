@@ -1,0 +1,22 @@
+name: vcpkg build
+
+on: push
+
+jobs:
+  buildme:
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      matrix:
+        config:
+        - os: windows-2019
+          vcpkg_triplet: x64-windows-release
+    steps:
+      - name: vcpkg build
+        uses: johnwason/vcpkg-action@v4
+        id: vcpkg
+        with:
+          manifest-dir: ${{ github.workspace }} # Set to directory containing vcpkg.json
+          triplet: ${{ matrix.config.vcpkg_triplet }}
+          cache-key: ${{ matrix.config.os }}
+          revision: master
+          token: ${{ github.token }}
